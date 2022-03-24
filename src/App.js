@@ -1,23 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home';
+import Blogs from './pages/Blogs';
+import Contact from './pages/Contact';
+import Calc from './pages/Calc';
+import NoPage from './pages/NoPage';
+
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes, Switch
+} from "react-router-dom";
+
 
 function App() {
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Router>
+      <div className='links'>
+        <Link to="" className='space'> <b>Home </b></Link>
+        <Link to="/blogs" className='space'>  Blogs </Link>
+        <Link to="/contect" className='space'> Contact </Link>
+        <Link to="/calculator" className='space'> Calculator </Link>
+
+
+
+      </div>
+      <Switch>
+        <Routes>
+          <Route path="" element={<Home/>}/>
+          <Route path="/blogs" element={<Blogs/>}/>
+          <Route path="/contect" element={<Contact/>}/>
+          <Route path="/nopage" element={<NoPage/>}/>
+          <Route path="/calculator" element={<Calc/>}/>
+          <Route path="*" element={<NoPage/>}/>
+         
+        </Routes>
+        </Switch>
+
+
+      </Router>
+
+
     </div>
   );
 }
